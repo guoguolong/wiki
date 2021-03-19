@@ -28,8 +28,8 @@ curl https://get.acme.sh | sh
 通过 DNS 生成证书配置，我用的是Aliyun，首先去aliyun.com获得 API Key 和 API Secret：
 
 ```sh
-export Ali_Key="LTAI4Fs6tL4smPA5vLbY7CSM"
-export Ali_Secret="274WVOXOjVDl7gwV80K86Xb7ehA1M4"
+export Ali_Key="${Ali_key}"
+export Ali_Secret="{Ali_Secret}"
 
 acme.sh --issue --dns dns_ali -d shunyii.cn -d *.shunyii.cn
 ```
