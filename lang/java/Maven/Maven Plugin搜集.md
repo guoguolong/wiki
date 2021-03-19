@@ -1,0 +1,1 @@
+## maven-assembly-plugin : 打包fat-jar

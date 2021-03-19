@@ -98,7 +98,7 @@ Authorization: Bearer <token>
 
 下面这张图显示了如何获取JWT以及使用它来访问APIs或者资源：
 
-![image](http://note.youdao.com/yws/res/2536/F1F38AD85F854EDD879471B39EA0AF4D?ynotemdtimestamp=1616128397147)
+![image](images/F1F38AD85F854EDD879471B39EA0AF4D.png)
 
 1. 应用（或者客户端）想授权服务器请求授权。例如，如果用授权码流程的话，就是/oauth/authorize
 2. 当授权被许可以后，授权服务器返回一个access token给应用
@@ -127,7 +127,7 @@ Authorization: Bearer <token>
 Session方式存储用户信息的最大问题在于要占用大量服务器内存，增加服务器的开销。
 而JWT方式将用户状态分散到了客户端中，可以明显减轻服务端的内存压力。
 Session的状态是存储在服务器端，客户端只有session id；而Token的状态是存储在客户端。
-![image](http://note.youdao.com/yws/res/2534/99D323797E8841149D77AA7011D3C1EE?ynotemdtimestamp=1616128397147)
+![image](images/99D323797E8841149D77AA7011D3C1EE.png)
 
 ### 5.3. 基于Token的身份认证是如何工作的
 
