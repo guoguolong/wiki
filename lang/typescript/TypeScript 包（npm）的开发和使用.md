@@ -108,18 +108,18 @@ module.exports = (webpackConfigEnv) => {
   const APP_PATH = __dirname;
   
   // 以下是关键代码：修改默认 loader 规则.
-  defaultConfig.module.rules.map(rule => {
-    if (rule.test) {
-      if (rule.test.toString() == /\.(js|ts)x?$/) {
-        delete rule.exclude;
-        rule.include = [
-          path.resolve(APP_PATH, 'src'),
-          path.resolve(APP_PATH, 'test'),
-          path.resolve(APP_PATH, 'node_modules/@allen/widgets')
-        ]
-      }
-    }
-  })
+  + defaultConfig.module.rules.map(rule => {
+  +   if (rule.test) {
+  +     if (rule.test.toString() == /\.(js|ts)x?$/) {
+  +       delete rule.exclude;
+  +       rule.include = [
+  +         path.resolve(APP_PATH, 'src'),
+  +         path.resolve(APP_PATH, 'test'),
+  +         path.resolve(APP_PATH, 'node_modules/@allen/widgets')
+  +       ]
+  +     }
+  +   }
+  + })
   ... ...
 ```
 
