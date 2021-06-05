@@ -90,7 +90,8 @@ yarn add react-i18next
 
 ## AntD
 ```
-
+yarn add @types/antd --dev
+yarn add antd
 ```
 
 ## 支持 markdown
