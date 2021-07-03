@@ -7,13 +7,14 @@ yarn global add create-react-app
 ## create-react-app 创建 typescript 工程骨架
 
 ```
+
 create-react-app magic-mooc --template typescript
 ```
-
 
 ## 支持 webpack 配置定制
 
 ```
+cd magic-mooc
 yarn add react-app-rewired --dev
 yarn add customize-cra --dev
 ```
@@ -36,7 +37,7 @@ https://react-redux.js.org React集成版 (直接使用足矣)
 ```
 yarn add redux
 yarn add react-redux
-yarn add @types/react-redux # support typescript
+yarn add --dev @types/react-redux  # support typescript
 ```
 
 ## 支持 redux 异步 dispatch
@@ -57,7 +58,7 @@ react-router-dom  替代 react-router，直接安装可。
 
 ```
 yarn add react-router-dom
-yarn add @types/react-router-dom
+yarn add --dev @types/react-router-dom 
 ```
 
 ## 远程调用：axios

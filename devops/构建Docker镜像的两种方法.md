@@ -23,7 +23,7 @@ VOLUME ["/opt/my/logs/app"]
 CMD ["npm run $NODE_ENV:start"]
 ```
 
-### 构建Dockerfile
+### 1. 构建Dockerfile
 
 如果编写好的dockerfile存在" /project/docker/racoon"下，那么，可以操作如下：
 
@@ -31,19 +31,21 @@ cd /project/docker/racoon
 
 >docker build -t racoon:1.0.0 . 
 
-说明： -t 后面接软件名称和版本号，格式SoftWare_Name：Tag，最后的那个“.”千万别忽略了。
+**说明： -t 后面接软件名称和版本号，格式SoftWare_Name：Tag，最后的那个“.”千万别忽略了(表示基于哪个目录)。**
 
 下面是构建一个名字为 racoon，版本号为 latest 的镜像
->docker build -t racoon:latest. 
+>docker build -t racoon:latest . 
 
-### 运行构建好的镜像
+### 2. 运行构建好的镜像
 
 运行名字为 racoon，版本号为 1.0.0 的镜像
 
-> docker run racoon:1.0.0 .
+> docker run racoon:1.0.0
 
-暴露端口 4900 到外部 80 端口
-> docker run -p 4900:80 racoon:1.0.0 .
+暴露容器内部端口 4900 到外部 80 端口
+> docker run -p 80:4900 racoon:1.0.0
+
+**注：运行该命令不限在 “cd /project/docker/racoon”目录**
 
 
 ## II. 用正在运行的 container 构建镜像
@@ -79,6 +81,6 @@ guoguolong/webear  0.1.0          0195f4647e2e    58 seconds ago  361 MB
 
 一般情况：image的名字要以 `<用户名>/` 开头， 这个用户名就是你前面docker login使用的用户名。否则没有权限。
 
-如果你的image的名字不符合这个规范，可以打一个符合规范的标签再上传：
+如果你的image的名字不符合这个规范，可以打一个符合规范的标签再上传（再执行docker push）：
 
 > docker tag webear tuncow/webear docker push tuncow/webear
