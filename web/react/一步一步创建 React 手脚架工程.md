@@ -1,4 +1,4 @@
-## Install create-react-app 
+## 安装 create-react-app 
 
 ```
 yarn global add create-react-app 
@@ -7,19 +7,21 @@ yarn global add create-react-app
 ## create-react-app 创建 typescript 工程骨架
 
 ```
-
 create-react-app magic-mooc --template typescript
 ```
 
 ## 支持 webpack 配置定制
 
-```
+```bash
 cd magic-mooc
+yarn add webpack@4.44.2 --dev
 yarn add react-app-rewired --dev
 yarn add customize-cra --dev
 ```
 
-更多参考 [React 定制webpack配置文件](http://note.youdao.com/noteshare?id=a57adfa9f74ffeacefa4b91a4238c917)
+关于兼容性： 因为 `react-app-rewired` 要求 `webpack 4.44.2`，所以在 package.json 中精确指定版本号：`"webpack": "4.44.2"`
+
+更多参考 [React 定制webpack配置文件](React 定制webpack配置文件.html)
 
 ## 支持 less
 
@@ -27,13 +29,15 @@ yarn add customize-cra --dev
 yarn add less
 yarn add --dev less-loader
 ```
+less和less-loader版本兼容性问题： less-loader最新版本要求 `webpack 5`，由于前面使用了 `webpack 4.44.2`，所以需要明确安装 less@4 和 less-loader@6（该版本支持webpack 4），
 
-更多参考 [React 定制webpack配置文件](http://note.youdao.com/noteshare?id=a57adfa9f74ffeacefa4b91a4238c917)
+更多参考 [React 定制webpack配置文件](React 定制webpack配置文件.html)
 
 ## 支持 redux
 
 https://redux.js.org/ 基础版  
 https://react-redux.js.org React集成版 (直接使用足矣)
+
 ```
 yarn add redux
 yarn add react-redux

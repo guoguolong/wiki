@@ -23,7 +23,7 @@ module.exports = function override(config, env) {
 ```
 ### 3. 替换react-script（在package.json）
 
-```
+```json
 {
   "scripts": {
 -   "start": "react-scripts start",
