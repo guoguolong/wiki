@@ -1,8 +1,8 @@
-# Babel
+## Babel
 
 支持ES6， React.js, jsx代码高亮
 
-# codeFormatter
+## codeFormatter
 
 一款可以对html、JS、CSS、PHP、python代码格式化的sublime插件
 
@@ -32,7 +32,7 @@
 }
 ```
 
-# Nunjucks
+## Nunjucks
 
 插件下载地址： https://github.com/mogga/sublime-nunjucks/blob/master/Nunjucks.tmLanguage
 
@@ -40,7 +40,7 @@
 
 重启Sublime Text，再次打开.njk文件的时候，已经可以高亮显示了。
 
-# phpfmt
+## phpfmt
 
 一款格式化PHP的插件 安装后，打开Sulime Text3的Preference->Browse Packages进入文件目录，打开phpfmt.sublime-settings，配置修改如下：
 
@@ -69,4 +69,19 @@
 	"visibility_order": true,
 	"yoda": true
 }
+```
+
+## less文件存储自动生成.css
+
+1. 安装 less (语法高亮)
+2. 安装 Less2Css
+3. 安装 CleanCss
+
+如果提示：
+>Unable to load plugin clean-css please marke sure that it is installed
+under or at the same level as less
+
+命令下安装低版本 less：
+```
+npm install less@1.6.2 -g
 ```
