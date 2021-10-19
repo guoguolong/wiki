@@ -1,7 +1,3 @@
-## Babel
-
-支持ES6， React.js, jsx代码高亮
-
 ## codeFormatter
 
 一款可以对html、JS、CSS、PHP、python代码格式化的sublime插件
@@ -69,19 +65,4 @@
 	"visibility_order": true,
 	"yoda": true
 }
-```
-
-## less文件存储自动生成.css
-
-1. 安装 less (语法高亮)
-2. 安装 Less2Css
-3. 安装 CleanCss
-
-如果提示：
->Unable to load plugin clean-css please marke sure that it is installed
-under or at the same level as less
-
-命令下安装低版本 less：
-```
-npm install less@1.6.2 -g
 ```

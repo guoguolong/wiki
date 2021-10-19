@@ -1,4 +1,4 @@
-macOS下，我用brew安装python3
+macOS Big Sure下，默认支持 Python3，如果用brew安装python3
 
 Sublime菜单选择：Tools -> Build System -> New Build System
 
