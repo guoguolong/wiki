@@ -9,9 +9,13 @@
 
 如果提示：
 >less2css error: `lessc` is not available
+>
+>或者
+>
+>Unable to load plugin clean-css please make sure that it is installed under or at the same level as less
 
+命令行下安装 less 和他的clean-css插件：
 
-命令下安装低版本 less：
 ```
-npm install less@1.6.2 -g
+npm install less less-plugin-clean-css -g
 ```
