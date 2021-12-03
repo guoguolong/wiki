@@ -11,7 +11,7 @@ https://prettier.io/
 ```json
 {
   "tabWidth": 3,
-  "semi": false,
+  "semi": true,
   "singleQuote": true  
 }
 ```
