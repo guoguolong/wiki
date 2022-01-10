@@ -10,7 +10,7 @@
 declare module '@koda/common' {
     const constants: any;
     const helpers: any;
-    export {
+    export default {
       constants,
       helpers
     }

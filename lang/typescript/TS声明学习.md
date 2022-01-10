@@ -29,6 +29,12 @@ declare global {
 }
 ```
 
+如果不用。export /declare global这样的风格，可以直接使用
+
+```js
+declare function $t(s: string): string;
+```
+
 ## NPM包类型带命名空间 namespace
 
 方案I

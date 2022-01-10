@@ -23,7 +23,7 @@ module.exports = function override(config, env) {
 ```
 ### 3. 替换react-script（在package.json）
 
-```json
+```diff
 {
   "scripts": {
 -   "start": "react-scripts start",
@@ -46,28 +46,58 @@ module.exports = function override(config, env) {
 yarn add customize-cra --dev
 ```
 
-### 2. 案例: 使支持 less
+### 2. 案例A：支持alias @
 
-假设用 create-react-app 已经生成了一个demo项目。
+#### a. 安装 postcss-px2rem
+
+```bash
+yarn add --dev postcss-px2rem
+```
+
+#### b. 修改  config-overrides.js
+
+```js
+const { override, addWebpackAlias } = require('customize-cra');
+module.exports = override(
+  addWebpackAlias({
+    ['@']: path.resolve(__dirname, './src'),
+  }),
+);
+```
+
+#### c. 写一个例子
+
+App.js 里用如下方式引用 App.css
+
+```javascript
+import '@/App.css'
+```
+
+测试发现等同于 `./App.css` ，同样可以工作。
+
+### 3. 案例B：使支持 less
+
+很不幸，customize-cra自带的 less-loader在最新版的CRA中不工作，所以要安装 customize-cra-less-loader
 
 #### a. 安装 less 和 less-loader
 
 ```
-yarn add less
-yarn add --dev less-loader
+yarn add --dev less
+yarn add --dev customize-cra-less-loader
 ```
 
 #### b. config-overrides.js内容如下
-```
-const { override, addLessLoader } = require("customize-cra");
+
+```javascript
+const addLessLoader = require("customize-cra-less-loader");
 module.exports = override(
     addLessLoader()
 );
 ```
 
-#### c. 新增 src/App.less
+#### 新增 src/App.less
 
-```
+```less
 @width: 100px;
 @height: 100px;
 
@@ -79,7 +109,8 @@ img {
 ```
 
 #### c. src/App.js 引入 App.less
-```
+
+```javascript
 import './App.less';
 ```
 

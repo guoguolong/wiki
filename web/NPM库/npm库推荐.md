@@ -19,7 +19,9 @@ https://javascript.info/mixins
 
 1. crypto-js
 
-### C. RSA
+### C. GET参数的处理
+
+   	  1. query-string (get最好的库)
 
 ## 浏览器
 
@@ -31,4 +33,3 @@ https://javascript.info/mixins
 Keywords
 
 1. url-parse - URL parser that works seamlessly across Node.js and browser environments - 这个库有点鸡肋
-2. query-string - 解析 url，特别是get参数，不错
