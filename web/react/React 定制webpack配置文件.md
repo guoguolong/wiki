@@ -48,13 +48,7 @@ yarn add customize-cra --dev
 
 ### 2. 案例A：支持alias @
 
-#### a. 安装 postcss-px2rem
-
-```bash
-yarn add --dev postcss-px2rem
-```
-
-#### b. 修改  config-overrides.js
+#### a. 修改  config-overrides.js
 
 ```js
 const { override, addWebpackAlias } = require('customize-cra');
@@ -65,7 +59,7 @@ module.exports = override(
 );
 ```
 
-#### c. 写一个例子
+#### b. 写一个例子
 
 App.js 里用如下方式引用 App.css
 
