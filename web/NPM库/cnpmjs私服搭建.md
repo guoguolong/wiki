@@ -4,7 +4,7 @@ https://github.com/cnpm/cnpmjs.org 下载 3.0.0-alpha.15 版本，然后参考�
 
 1. 导入sql到mysql数据库
 2. 添加配置文件 config/config.js
-```
+```js
 module.exports = {
     debug: false,
     enableCluster: true, // enable cluster mode
