@@ -1,42 +1,7 @@
-设 3 个源代码文件，在同一个目录，分别是：`api.ts`、`helper.ts`、`client.ts`
-
-
-
-## api.ts
-
-```ts
-export function transfer() {
-  console.log('ran transfer');
-}
-
-export function obj2csv() {
-  console.log('ran obj2csv');
-}
-
-export default  {
-  aObj2csv: obj2csv,
-  aTransfer: transfer
-}
+进入项目目录（package.json所在目录）
+```bash
+$ npm i -g npm-check-updates
+$ ncu -u
+$ npm install
 ```
-
-
-
-## helper.ts
-
-```ts
-export * from "./api";
-export { default as Api } from "./api";
-// export {} // 无用的行
-```
-
-## client.js
-
-```ts
-import { obj2csv, Api } from './helper'
-
-obj2csv(); // 输出：ran obj2csv
-Api.aTransfer();  // 输出： ran tansfer
-```
-
-
 

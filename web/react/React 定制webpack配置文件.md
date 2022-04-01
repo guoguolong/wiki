@@ -51,11 +51,12 @@ yarn add customize-cra --dev
 #### a. 修改  config-overrides.js
 
 ```js
+const path = require("path");
 const { override, addWebpackAlias } = require('customize-cra');
 module.exports = override(
   addWebpackAlias({
     ['@']: path.resolve(__dirname, './src'),
-  }),
+  ),
 );
 ```
 

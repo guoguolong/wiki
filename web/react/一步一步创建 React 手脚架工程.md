@@ -89,12 +89,12 @@ create-react-app 已经集成了:
 
 ## 国际化
 
-```
+```shell
 yarn add react-i18next
 ```
 
 ## AntD
-```
+```bash
 yarn add @types/antd --dev
 yarn add antd
 ```
