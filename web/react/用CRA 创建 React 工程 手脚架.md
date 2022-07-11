@@ -20,10 +20,10 @@ npm start
 安装 craco 
 
 ```bash
-npm i @craco/craco@7.0.0-alpha.3 -D
+npm i @craco/craco@alpha -D
 ```
 
-> 安装 @craco/craco@7.0.0-alpha.3 位了支持 CRA 5
+> 将会安装 @craco/craco@7.0.0-alpha.3 位了支持 CRA 5
 
 修改 `package.json`里的 `scripts`属性
 
