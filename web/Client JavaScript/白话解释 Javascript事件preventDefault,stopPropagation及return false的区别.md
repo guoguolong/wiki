@@ -1,3 +1,5 @@
+[toc]
+
 想必好多童鞋都有直接复制粘贴event.preventDefault() 或者event.stopPropagation() 的经历，但是为什么这样做不甚了解，今天我们的目的就是要彻底搞懂这一区别。
 
 ### javascript中的“事件传播”模式
@@ -32,7 +34,7 @@ IE9以下仅仅支持冒泡模式，但是IE9+以及现在的主流浏览器都�
 
 用哪种事件传播方式完全是我们自己说了算的，我们可以使用
 
-```
+```javascript
 addEventListener(type, listener, useCapture)
 ```
 
@@ -40,52 +42,67 @@ addEventListener(type, listener, useCapture)
 
 #### 例子
 
-```
+```html
 <div id="outerMost">
     <div id="middle">
-        <a href="" id="innerMost" >click</a>
+        <div id="innerMost" >click</div>
     </div>
 </div>
 ```
 
 我们可以对上述代码添加一些样式，这样在网页中更直观。
 
-```
-<div id="outerMost" style="border: 1px solid black; width: 150px; height: 120px; padding: 20px;">
-    outerMost
-    <div id="middle" style="border: 1px solid black; width: 60px; height: 60px; padding: 20px;">
-        Middle
-        <a href="" id="innerMost" style="border: 1px solid black; width: 30px; height: 20px; display: block; margin: 20px;">click</a>
+```html
+<style>
+#middle {
+  border: 1px solid black;
+  width: 150px;
+  height: 120px;
+  padding: 20px;
+}
+#innerMost {
+  border: 1px solid black;
+  width: 30px;
+  height: 20px;
+  display: block;
+  margin: 20px;
+}
+</style>
+
+<div id="outerMost">
+    <div id="middle">
+        <div id="innerMost" >click</div>
     </div>
 </div>
 ```
 
 如图：  
-![image](http://note.youdao.com/yws/res/5729/7A4B9BF979664AE09E7F1769800D7D3D)
+![image-20220808183419149](images/image-20220808183419149.png)
 
 #### 使用事件捕获模式注册事件监听
 
 对最外层，中间层，最内层分别用“捕获”模式注册事件监听，我们上面说了，如果使用捕获模式，那么addEventListener第三个参数应该是true，否则则是冒泡模式，如果不声明，默认为冒泡模式。
 
-```
+```javascript
 var outerElement = document.getElementById('outerMost');
 var middleElement = document.getElementById('middle');
 var innerElement = document.getElementById('innerMost');
 
-outerElement.addEventListener('click', function () {
-    console.log('trigger outermost div');
+outerElement.addEventListener('click', function (e) {
+  // e.stopPropagation(); //停止时间传播
+  console.log('trigger outermost div');
 }, true);
 middleElement.addEventListener('click', function () {
-    console.log('trigger middle div');
+  console.log('trigger middle div');
 }, true);
 innerElement.addEventListener('click', function () {
-    console.log('trigger innermost button');
+  console.log('trigger innermost button');
 }, true);
 ```
 
 我们点击中间层Middle字样，如图：  
 
-![image](http://note.youdao.com/yws/res/5731/4804E298837F4F998CC8B1DB012884A3)
+![image-20220808183537395](images/image-20220808183537395.png)
 
 可以看到，事件触发从外向里进行，如果大家把addEventListener中第三个参数改为false或者留空，点击middle字样，则会得到相反的结果，大家可以自己试一下。
 
@@ -95,7 +112,7 @@ innerElement.addEventListener('click', function () {
 
 所以为了“阻止”元素的“默认特性”，所以事件对象中有了一个preventDefault方法，如下：
 
-```
+```javascript
 innerElement.addEventListener('click', function (event) {
     event.preventDefault();
     console.log('trigger innermost button');
@@ -110,12 +127,11 @@ trigger middle div
 trigger innermost button
 ```
 
-那么stopPropagation呢？
-向上面这种情况，如果当你点击click的时候，只想出发绑定在click上的监听函数，而不想触发“传播链”上的其他函数，那么则使用stopPropagation。
+那么`stopPropagation`呢？像上面这种情况，如果当你点击click的时候，只想出发绑定在click上的监听函数，而不想触发“传播链”上的其他函数，那么则使用stopPropagation。
 
-注意：你在那个事件监听函数中使用event.stopPropagation();那么传播链就会终止，向上面这个例子，因为我们使用的是捕获模式，即使我们添加了：
+注意：你在那个事件监听函数中使用`event.stopPropagation();`那么传播链就会终止，像上面这个例子，因为我们使用的是捕获模式，即使我们添加了：
 
-```
+```javascript
 innerElement.addEventListener('click', function (event) {
     event.preventDefault();
     event.stopPropagation();
@@ -125,7 +141,7 @@ innerElement.addEventListener('click', function (event) {
 
 依然会得到和上面一样的结果，为什么呢？因为捕获模式是由外往里传播，我们只是在a这里阻止了继续像里传播，因为没有更里的元素了，所以结果一样，为了更好地演示，我们可以把捕获模式改为冒泡模式如下：
 
-```
+```javascript
 var outerElement = document.getElementById('outerMost');
 var middleElement = document.getElementById('middle');
 var innerElement = document.getElementById('innerMost');
@@ -149,11 +165,11 @@ innerElement.addEventListener('click', function (event) {
 trigger innermost button
 ```
 
-### return false;
+### jQuery的return false;
 
 最后说一下return false; 这是jQuery中提供，比如：
 
-```
+```javascript
 $('#innermost').on('click', function () {
     return false;
 })
@@ -168,7 +184,7 @@ $('#innermost').on('click', function () {
 
 这两个工作，你可以看做是一种快捷方式，但是你在原生javascript中的监听回调函数中写return false; 是没有任何用的。比如：
 
-```
+```javascript
 innerElement.addEventListener('click', function (event) {
     return false;
 });
