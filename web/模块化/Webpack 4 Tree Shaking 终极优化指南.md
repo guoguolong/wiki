@@ -114,7 +114,7 @@ export default stuff;
 const config = {
  presets: [
   [
-   '[@babel/preset-env](http://twitter.com/babel/preset-env)',
+   '@babel/preset-env',
    {
     modules: false
    }

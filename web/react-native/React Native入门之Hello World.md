@@ -8,6 +8,8 @@
 
 ## 1. React Native CLI Quickstart
 
+> 该方法创建一个RN模板项目，也包含了Android、iOS壳应用（分别位于 andorid、ios子目录）。
+
 ### 初始化项目
 
 选择我工作电脑的平台（macOS， iOS），预安装环境包括： node、wantchman、xcode等，不过Web前端程序员默认都装了这些吧，所以直接初始化项目：
@@ -26,9 +28,8 @@ npm run ios
 
 ![AwesomeProject on iOS](images/GettingStartediOSSuccess-e6dd7fc2baa303d1f30373d996a6e51d.png)
 
-注：我本机运行有如下错误，但是点击 `OK` 继续运行不影响使用：
-
-<img src="images/image-20220402150545789.png" alt="image-20220402150545789" style="zoom:50%;" />
+> 注：我本机运行有如下错误，但是点击 `OK` 继续运行不影响使用：
+> <img src="images/image-20220402150545789.png" alt="image-20220402150545789" style="zoom:50%;" />
 
 ### 支持热更新
 
@@ -47,6 +48,12 @@ npm run start
 
 
 ## 2. Expo CLI Quickstart
+
+> Expo创建一个RN模板项目，也自带了Andorid、iOS壳应用，不过在项目下并没有 andorid、ios子目录，应该是隐藏在 node_modules目录下。另外 Expo 也提供了apple和andorid的手机应用Expo Go 用于真机直接下载测试
+>
+> 苹果应用：https://apps.apple.com/app/apple-store/id982107779
+>
+> 谷歌应用：https://play.google.com/store/apps/details?id=host.exp.exponent&referrer=www
 
 ### 初始化项目
 
