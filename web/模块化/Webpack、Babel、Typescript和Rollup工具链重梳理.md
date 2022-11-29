@@ -6,7 +6,7 @@
 
 上面描述已经揭示出：Babel 和 TypeScript 才是 ES6+ 转 ES5的工具，而 Rollup、Webpack其实是借助 Babel/TypeScript 进行ES6+到ES5的转译，其只作为工程构建链条里的一部分，因此，可以是说 ES6+转ES5 是前端工程构建的核心，也是本文着重要介绍的内容。
 
-ES6+转ES5 的目的是为了使旧版本浏览器（不支持ES6+）能运行 ES6+书写的代码，这个所谓的**不支持**分为两部分：
+ES6+转ES5 的目的是为了使旧版本浏览器（不支持ES6+）能运行 使用ES6+书写的代码，这个所谓的**不支持**分为两部分：
 
 1. 旧版本浏览器不支持的ES6语法，如: let、...操作符
 2. 旧版本浏览器不支持的ES6新增函数，如：Promise等 （通常我们说Polyfill，其实就是用来解决这个问题的）
@@ -231,3 +231,12 @@ require("core-js/modules/es.symbol.search.js");
 https://www.jianshu.com/p/743bb036bf40
 
 ？？？不用Polyfill，应用侧如何处理Promise
+
+
+
+## Webpack
+
+```bash
+ npm i webpack webpack-cli -D
+```
+
