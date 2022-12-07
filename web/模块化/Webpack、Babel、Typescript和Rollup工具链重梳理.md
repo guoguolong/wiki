@@ -53,7 +53,7 @@ npm install --save-dev @babel/core @babel/cli @babel/preset-env
 **babel.config.js**
 
 ```js
-{
+module.exports = {
   "presets": ["@babel/preset-env"]
 }
 ```
@@ -94,7 +94,7 @@ var calc = function calc() {
 但是，如果运行的浏览器已经支持 ...或者 let 操作符，那何必一定转换呢？没错，可以通过修改 babel.config.js 配置，指定目标运行的浏览器
 
 ```js
-{
+module.exports = {
   "presets": [
     [
       "@babel/preset-env",
@@ -146,7 +146,7 @@ const calc = () => {
 修改配置 babel.config.js，useBuiltIns 指定目标代码策略，corejs是polyfill的库的名称，值是该库的版本号。
 
 ```js
-{
+module.exports = {
   "presets": [
     [
       "@babel/preset-env",
@@ -242,7 +242,7 @@ https://www.jianshu.com/p/743bb036bf40
 npm i webpack webpack-cli -D
 ```
 
-## 默认构建
+###  默认构建
 
 ```
 pnpm exec webpack
@@ -250,7 +250,7 @@ pnpm exec webpack
 
 构建IFEE 目标JS文件，看目标代码，显然不会ES5转译、也不会处理依赖包里的函数`polyfill`
 
-### 使用Babel转译
+### 使用Babel插件转译ES
 
 * 安装依赖
 
@@ -260,7 +260,7 @@ pnpm exec webpack
 
 注：pnpm 必须要安装`@babel/core`、 `core-js`，npm则不需要。
 
-### 1. 仅转译 ES6+语法
+#### 1. 仅转译 ES6+语法
 
 * 创建 `webpack.config.js`
 
@@ -288,11 +288,6 @@ module.exports = {
 
 ```js
 module.exports = {
-  plugins: [
-    [
-      "@babel/plugin-transform-modules-commonjs"
-    ]
-  ],
   presets: [
     [
       "@babel/preset-env",
@@ -303,7 +298,7 @@ module.exports = {
 
 重新运行 `webpack`， 目标代码ES6语法转为ES5语法了。
 
-**注：**如果不用 babel.config.js，可以直接在 webpack.config.js增加 bable-loader options
+**注：**如果不用 `babel.config.js`，可以直接在 `webpack.config.js` 增加 bable-loader options
 
 ```diff
 module.exports = {
@@ -323,71 +318,138 @@ module.exports = {
 };
 ```
 
-### 2. Polyfill 代码 
+#### 2. 仅Polyfill 前端工程里的代码 
 
-* 修改 babel.config.js
+* 待测试代码
 
-  ```diff
-  module.exports = {
+修改测试代码，先移除代码里对第三方包`@guoguolong/babel-tutorial`的导入和使用。 代码如下
+```javascript
+const demo = () => {
+  let { x, y, ...z } = { x: 1, y: 2, name: 'Allen', addr: 'Mars' };  
+  console.log('Demo: ', z)
+}
+
+
+const request = (text) => {
+  return new Promise((resolve, reject)=>{  // ES5不知的API，需要Polyfill
+    resolve('Request ' + text);
+  })
+}
+request('http').then(resp=>{
+  console.log(resp)
+})
+
+demo();
+```
+
+* 修改 `babel.config.js`
+
+```diff
+module.exports = {
     presets: [
       [
         "@babel/preset-env",
-  +      {
-  +        "useBuiltIns": "usage",
-  +        "corejs": "3",
-  +      }
++      {
++        "useBuiltIns": "usage",
++        "corejs": "3",
++      }
       ]
     ]
   }
-  ```
+```
 
-  源代码里的ES6函数就被polyfill了
+* 修改`webpack.config.js`
 
-### 3. Polyfill npm包里的代码
+```diff
+const path = require('path');
 
-* 安装依赖： 
+module.exports = {
+  module: {
+    rules: [
+      { 
+        test: /\.m?js$/,
++        include: [
++          /src/,
++        ],
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
+      }
+    ],
+  },
+};
+```
+
+运行 `npx webpack`  源代码里的ES6函数就被polyfill了
+
+#### 3. 也Polyfill npm包里的代码
+
+* 修改待测试代码：增加对第三方包`@guoguolong/babel-tutorial`的使用
+
+```diff
++ import * as lib from '@guoguolong/babel-tutorial';
+
++ // 不处理库代码的 ES6->ES5
++ lib.calc();
+
++ lib.asynFunc('CheckName').then(resp => {
++   console.log(resp)
++ })
+
+const demo = () => {
+  let { x, y, ...z } = { x: 1, y: 2, name: 'Allen', addr: 'Mars' };  
+  console.log('Demo: ', z)
+}
+...
+```
+
+* 修改 babel.config.js（非必要）
+
+由于本例子中使用的 `@guoguolong/babel-tutorial`是`commonjs` 格式，Webpack转换IIFE时需要处理，需要安装依赖： 
 
 ```bash
 pnpm add @babel/plugin-transform-modules-commonjs`
 ```
 
-因为例子中使用的 `@guoguolong/babel-tutorial`是 commonjs 格式，Webpack转换IIFE时需要处理。
-* 修改 babel.config.js
-
-  ```diff
-  module.exports = {
-  +  plugins: [
-  +    [
-  +      "@babel/plugin-transform-modules-commonjs"
-  +    ]
-  +  ],
+```diff
+module.exports = {
++  plugins: [
++    [
++      "@babel/plugin-transform-modules-commonjs"
++    ]
++  ],
     presets:
     ...
-  }
-  ```
-  
-* 修改 webapck.config.js
+}
+```
 
-  ```diff
-  module.exports = {
-    module: {
-      rules: [
-        { 
-          test: /\.m?js$/,
-          include: [
-  +          /src/,
-  +          /node_modules\/@guoguolong\/babel-tutorial/
-          ],
-          use: {
-            loader: 'babel-loader',
-          }
+重新运行 `npx webpack`，目标代码中所有的ES6+  API都被 polyfill了，包括引用的 npm 包里ES6+ API。
+
+#### 4. 很不幸，npm包代码既没有转ES5，也没有Polyfill
+
+* 配置 `webpack.config.js` 指定编译该 npm 包即可
+
+```diff
+module.exports = {
+  module: {
+    rules: [
+      { 
+        test: /\.m?js$/,
+        include: [
+           /src/,
++          /node_modules\/@guoguolong\/babel-tutorial/
+        ],
+        use: {
+          loader: 'babel-loader',
         }
-      ],
-    }
-  };
-  ```
+      }
+    ],
+  }
+};
+```
 
-明确指定用`babel`处理 src、node_modules/@guoguolong/babel-turorial 目录里的ES6语法和`polyfill`。
-
-重新运行 `webpack`，然后用低版本 Firefox 浏览器看是否正确 `polyfill`了的`Promise`函数。
+重新运行 `webpack`，看目标代码是否不但转译ES6，还Polyfill之了？
 
