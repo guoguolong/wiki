@@ -197,7 +197,12 @@ git ls-remote origin
 ```bash
 git remote -v
 ```
+- 同步远程分支名
+删除了远程分支，本地同步时使用如下命令，否则 `git branch -r`还是旧的分支名列表
 
+```bash
+git remote update origin --prune
+ ```
 - 查看上游分支
 
 ```
