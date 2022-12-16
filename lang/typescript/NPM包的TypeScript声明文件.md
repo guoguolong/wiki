@@ -17,8 +17,6 @@ declare module '@koda/common' {
   }
 ```
 
-
-
 ## 作者方声明
 
 作者方声明具体也包含两种：
@@ -29,11 +27,12 @@ declare module '@koda/common' {
 
 ```typescript
 declare const _default: {
-	constants: any;
-	helpers: any;
+    constants: any;
+    helpers: any;
 };
 export default _default;
 ```
+
 如果文件名不是 index.d.ts 或者不在默认位置（根目录），需在 `package.json` 中声明 `types` 字段，假设声明文件在 `es/bundles.d.ts`，那么 `package.json` 声明如下：
 
 ```typescript
@@ -44,6 +43,6 @@ export default _default;
 }
 ```
 
-### 发布声明到[@types organization](https://www.npmjs.com/~types) 
+### 发布声明到[@types organization](https://www.npmjs.com/~types)
 
 更多参考： https://www.typescriptlang.org/docs/handbook/declaration-files/publishing.html
