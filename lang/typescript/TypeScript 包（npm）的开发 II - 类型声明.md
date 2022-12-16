@@ -1,4 +1,4 @@
-一个NPM包没有TypeScript声明文件通常有两种方法补充：
+一个NPM包没有TypeScript声明文件通常有两种方法弥补：
 
 ## 使用方声明
 
