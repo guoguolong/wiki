@@ -428,9 +428,9 @@ module.exports = {
 
 重新运行 `npx webpack`，目标代码中所有的ES6+  API都被 polyfill了，包括引用的 npm 包里ES6+ API。
 
-#### 4. 很不幸，npm包代码既没有转ES5，也没有Polyfill
+#### 4. npm包本身是ES6，需主动声明ES5转译.
 
-* 配置 `webpack.config.js` 指定编译该 npm 包即可
+* 配置 `webpack.config.js` 说明该 npm 包所在目录，指定其编译即可
 
 ```diff
 module.exports = {
@@ -451,5 +451,18 @@ module.exports = {
 };
 ```
 
-重新运行 `webpack`，看目标代码是否不但转译ES6，还Polyfill之了？
+重新运行 `webpack`，目标代码已经转成ES5（而且包含了Polyfill，只要项目babel做了相应配置）。
 
+现实中的一个例子是 `query-string`，一个著名的 `window.location`解析库，但是它是面向 node使用的，并没有转成 es5，所以，如果你的Web 项目想使用它，则需要明确指定转译它。
+```diff
+module.exports = {
+  module: {
+    rules: [
+      { 
+        test: /\.m?js$/,
+        include: [
+           /src/,
+           /node_modules\/@guoguolong\/babel-tutorial/
++          /node_modules\/query-string/
+};
+```

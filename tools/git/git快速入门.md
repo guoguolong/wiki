@@ -202,7 +202,7 @@ git remote -v
 
 ```bash
 git remote update origin --prune
- ```
+```
 - 查看上游分支
 
 ```
@@ -222,7 +222,7 @@ git commit -a –amend #对最近一次commit的进行修改
 git reset／git checkout / git revert
 ```
 
-一言难尽，但很重要。这个链接不错： https://segmentfault.com/a/1190000003102737
+一言难尽，但很重要。这个链接不错： https://segmentfault.com/a/11900s00003102737
 
 这里仅介绍最粗暴的一个：放弃工作目录所有修改！
 
