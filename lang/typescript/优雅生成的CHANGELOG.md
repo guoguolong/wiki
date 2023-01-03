@@ -8,8 +8,6 @@
 npm i -g auto-changelog
 ```
 
-
-
 ### 使用要求
 
 * auto-changelog 版本大于 1.7.2
@@ -46,7 +44,10 @@ git push origin --delete <tag name>
 git push origin --tags
  ```
 
-## II. 用 `@commitlint/config-conventional` 生成 `CHANGELOG.md`
+### 参考
+> https://www.npmjs.com/package/auto-changelog
+
+## II. 最流行的：用 `@commitlint/config-conventional` 生成 `CHANGELOG.md`
 
 https://mokkapps.de/blog/how-to-automatically-generate-a-helpful-changelog-from-your-git-commit-messages/
 
@@ -54,8 +55,5 @@ https://mokkapps.de/blog/how-to-automatically-generate-a-helpful-changelog-from-
 
 [Conventional Commits Specification](https://www.conventionalcommits.org)
 
->  **参考**
->
->   https://www.npmjs.com/package/auto-changelog
->
->  https://www.npmjs.com/package/@commitlint/config-conventional
+### 参考
+https://www.npmjs.com/package/@commitlint/config-conventional
