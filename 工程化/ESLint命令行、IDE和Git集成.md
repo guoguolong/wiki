@@ -142,7 +142,16 @@ npx eslint src --fix
 ```
 
 ## VSCode 中检查 ESLint
-## Prettier替代--fix
-## 和 git 集成
+vscode中安装 ESLint插件（VS Code ESLint extension），打开项目如果根目录下有 `.eslintrc.js`，就会对项目中的所有 .js/ts文件进行ESLint检查。如果有规则违背，编辑器就标红。此时，要么常手动修复，要么安装 `prettier` 插件进行格式化修正。
 
+## Prettier替代--fix
+
+ESLint 命令行可以 --fix 格式化违规代码，但是更稳妥，更现代的做法是：
+
+1. 在IDE（VSCode）中，用`prettier`进行格式化；
+2. 手动修复格式化问题以外的违规，有些地方很难用规则来判断的时候，手动修改也是必要的。
+
+`prettier`用法见单独文章介绍
+
+## 和 git 集成
 

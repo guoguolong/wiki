@@ -4,11 +4,11 @@ https://editorconfig.org/
 
 > `EditorConfig`帮助开发人员在不同的编辑器和IDE之间定义和维护一致的编码样式。
 
-这是一个仅在编辑器/IDE中应用的方法。
-
 试想：当在IDE/编辑器中创建源码文件后，输入回车、TAB等键时，回车符、缩进按照什么标准实行？答案是：按照 EditorConfig的配置说明实行。 
 
-“执行时机”是它和`prettier`等工具的重要区别。`prettier`是对已经完成的代码进行处理：明确地运行命令行或IDE快捷键操作时，格式化已有的代码。而`EditorConfig`是在代码输入时就施行预期的格式
+“执行时机”是它和`prettier`等工具的重要区别。`prettier`是对已经完成的代码进行处理：明确地运行命令行或IDE快捷键操作时，格式化已有的代码。而`EditorConfig`是在代码输入时就施行预期的格式。
+
+也因此，`EditorConfig` 是一个仅在编辑器/IDE中应用代码格式的方法。
 
 ## VSCode插件
 

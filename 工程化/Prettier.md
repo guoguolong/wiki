@@ -2,11 +2,15 @@
 
 https://prettier.io/
 
-## 独立使用
+## I. 命令行使用
 
-首先 `npm i -D prettier`
+安装依赖
 
-然后，在项目根目录下写一个.prettierrc.json 例子，如下：
+```bash
+npm i -D prettier
+```
+
+然后，在项目根目录下写一个`.prettierrc.json` 例子，如下：
 
 ```json
 {
@@ -35,13 +39,14 @@ export default {
 };
 ```
 
-执行
-
-> npx prettier --write src
+执行格式化
+```bash
+npx prettier --write src
+```
 
 看看 helper.js 是不是被格式化了？ 更多参考 https://prettier.io/docs/en/install.html
 
-## 集成IDE：VSCode 插件
+## II. 集成IDE(VSCode 插件)
 
 Prettier - Code formatter - https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
 
@@ -51,7 +56,7 @@ Prettier - Code formatter - https://marketplace.visualstudio.com/items?itemName=
 
 一旦安装好，就可以去 Preferences->Settings->Extensions->Prettier里进行具体设置了，这里的设置是**全局设置**，这里的修改都会反映到  settings.json 配置里。所以，如果你习惯直接写json配置，可以按 COMMAND+SHIFT+P 快捷键直接调出该文件进行修改：
 
-![image-20211203183653478](images/image-20211203183653478.png)
+![image-20230104000544649](images/image-20230104000544649.png)
 
 以下是一个修改过的 settings.json 的例子：
 
@@ -84,11 +89,11 @@ Prettier - Code formatter - https://marketplace.visualstudio.com/items?itemName=
 
 此时，用前面的例子，执行格式化试试（下图为文件右键单击的下拉菜单）
 
-![image-20211203184041062](images/image-20211203184041062.png)
+![image-20211203184041062.png](images/image-20211203184041062.png)
 
 ### 2. 使用.prettierrc.json 设置
 
-如果项目目录下有 .prettierrc.json 文件配置，该配置将覆盖前面的全局配置（settings.json)，即使 .prettierrc.json文件的内容为  `{}` 也是如此。
+如果项目目录下有 `.prettierrc.json` 文件配置，该配置将覆盖前面的全局配置（settings.json)，即使 `.prettierrc.json` 文件的内容为  `{}` 也是如此。
 
 ### 3. 如果存在 .editorconfig，那么有个优先级问题
 
@@ -107,4 +112,7 @@ Prettier - Code formatter - https://marketplace.visualstudio.com/items?itemName=
 
 等同于如下图形化操作哦：
 
-![image-20211203184649238](images/image-20211203184649238.png)
+![image-20211203184649238.png](images/image-20211203184649238-20230104000356049.png)
+
+## 与 GIT 集成
+
