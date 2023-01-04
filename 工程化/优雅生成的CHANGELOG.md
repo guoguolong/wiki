@@ -130,8 +130,10 @@ npm i standard-version -D
 首先，工程的package.json声明version首次版本名，如: 1.0.0
 
 ```bash
-npm run release -- --first-release
+npx standard-version --first-release
 ```
+
+或执行 scripts `npm run release -- --first-release`
 
 将产生类似下面这样的 CHANGELOG.md，同时创建了名字为`v1.0.0`的git tag。
 
