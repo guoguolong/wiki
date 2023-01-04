@@ -1,8 +1,8 @@
-# ESLint
+# ESLint命令行、IDE和Git、CI集成
 
 https://github.com/eslint/eslint - ESLint是一个识别和报告 ECMAScript/Javascript代码模式的工具，说人话：规范 JS 代码，
 
-## 命令行检查和修复
+## I. 命令行检查和修复
 建立实验项目（有package.json的合法js项目），然后初始化 ESLint：
 
 ### 声明 ESLint 规则
@@ -141,17 +141,46 @@ npx eslint src --fix
 .eslintrc.js
 ```
 
-## VSCode 中检查 ESLint
+## II. IDE中使用ESLint（VSCode）
 vscode中安装 ESLint插件（VS Code ESLint extension），打开项目如果根目录下有 `.eslintrc.js`，就会对项目中的所有 .js/ts文件进行ESLint检查。如果有规则违背，编辑器就标红。此时，要么常手动修复，要么安装 `prettier` 插件进行格式化修正。
 
-## Prettier替代--fix
+## III. Prettier替代--fix
 
 ESLint 命令行可以 --fix 格式化违规代码，但是更稳妥，更现代的做法是：
 
-1. 在IDE（VSCode）中，用`prettier`进行格式化；
+1. 在IDE（VSCode）中，用`prettier`进行修复代码格式方面的问题；
 2. 手动修复格式化问题以外的违规，有些地方很难用规则来判断的时候，手动修改也是必要的。
 
 `prettier`用法见单独文章介绍
 
-## 和 git 集成
+## IV. 和 git 集成
+
+请参考 `Prettier`文档学习细节——渐进实施`ESLint`：
+
+### A. lint-staged —— 仅检查git的staging区的文件
+
+由于在 package.json已经有了 `prettier`的 lint-staged配置，现在增加 `eslint`配置
+
+```diff
+{
+  "lint-staged": {
+    "**/*": [
+      "prettier --check --ignore-unknown",
++      "eslint"
+    ]
+  }
+}
+```
+
+当执行  `lint-staged`，会对待提交代码依次执行 prettier 和 eslint检查，如果代码违规，则不予提交。同理，可以使用`eslint --fix`替代`eslint`，直接修复，这取决于团队哲学，有的团队宁愿手动执行命令或在IDE中修复 ESLint违规代码，而不是在在提交代码时强制修复，此时就不要使用`--fix`。
+
+### B. Husky —— 提交git时机触发检查
+
+请参考 `Prettier`文档学习 husky 细节
+
+
+
+## V. 与  Preittier 结合使用
+
+要点是：ESLint和Prettier配置不能冲突。最基本的原则是：确保`.prettierrc.json`和`.eslintrc.js`规则一致。有些工具可以辅助使用：https://prettier.io/docs/en/integrating-with-linters.html
 
