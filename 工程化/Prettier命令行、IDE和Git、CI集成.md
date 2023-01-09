@@ -347,5 +347,5 @@ extends 增加 `plugin:prettier/recommended`，然后`rules`删除 `prettierrc.j
 
 Prettier官方：https://prettier.io/docs/en/integrating-with-linters.html提到：该插件缺点也是显然的，尤其是：编辑器（VSCode）将出现大段错误波浪线，是提示变得不明确，更加扰人。
 
-## prettier-eslint 用法？
+## prettier-eslint 用法（未完）
 

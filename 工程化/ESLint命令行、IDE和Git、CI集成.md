@@ -93,8 +93,6 @@ npx eslint src --fix
 
 有些能自动修复，有些不能则需要手动修复，如：手动安装 `loadsh-es`库，删除`console`代码等
 
-
-
 ### 项目定制规则
 
 在 airbnb、react/recommended基础上定义自己的规则，修改 `.eslintrc.js`的rules节点，如：
@@ -142,20 +140,17 @@ npx eslint src --fix
 ```
 
 ## II. IDE中使用ESLint（VSCode）
-vscode中安装 ESLint插件（VS Code ESLint extension），打开项目如果根目录下有 `.eslintrc.js`，就会对项目中的所有 .js/ts文件进行ESLint检查。如果有规则违背，编辑器就标红。此时，要么常手动修复，要么安装 `prettier` 插件进行格式化修正。
+vscode中安装 ESLint插件（VS Code ESLint extension），打开项目如果根目录下有 `.eslintrc.js`，就会对项目中的所有 .js/ts文件进行ESLint检查。如果有规则违背，编辑器就标红。此时，
 
-## III. Prettier替代--fix
+* 要么用该插件修复
 
-ESLint 命令行可以 --fix 格式化违规代码，但是更稳妥，更现代的做法是：
+  ![image-20230109093906526](images/image-20230109093906526.png)
 
-1. 在IDE（VSCode）中，用`prettier`进行修复代码格式方面的问题；
-2. 手动修复格式化问题以外的违规，有些地方很难用规则来判断的时候，手动修改也是必要的。
+* 要么安装 `prettier` 插件进行格式化修正。
 
-`prettier`用法见单独文章介绍
+## III. 和 git 集成
 
-## IV. 和 git 集成
-
-请参考 `Prettier`文档学习细节——渐进实施`ESLint`：
+请参考我的 **`Prettier`Wiki文档**学习细节——渐进实施`ESLint`：
 
 ### A. lint-staged —— 仅检查git的staging区的文件
 
@@ -176,11 +171,17 @@ ESLint 命令行可以 --fix 格式化违规代码，但是更稳妥，更现代
 
 ### B. Husky —— 提交git时机触发检查
 
-请参考 `Prettier`文档学习 husky 细节
+请参考我的 `Prettier`Wiki文档学习 husky 细节
 
+## IV 与 CI集成
 
+与 CI 集成时，宁愿不选择自动修复 git 源代码，所以更多选择不带 `--fix`参数的 `eslint`，即仅仅检查错误，有则返回报错通知。
+
+参考我的”Prettier Wiki文档——与CI集成“，解释更完整。
 
 ## V. 与  Preittier 结合使用
 
-要点是：ESLint和Prettier配置不能冲突。最基本的原则是：确保`.prettierrc.json`和`.eslintrc.js`规则一致。有些工具可以辅助使用：https://prettier.io/docs/en/integrating-with-linters.html
+要点是：ESLint和Prettier配置不能冲突。最基本的原则是：确保`.prettierrc.json`和`.eslintrc.js`规则一致。有些工具可以辅助使用：https://prettier.io/docs/en/integrating-with-linters.html。
+
+可以参考我的 `Prettier` wiki文档 <<V. 与ESLint 结合使用>> 学习更多细节。
 
