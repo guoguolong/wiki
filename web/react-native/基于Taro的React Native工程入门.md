@@ -1,12 +1,10 @@
+[toc]
 # 基于Taro的React Native工程入门
 
 官网文档： https://taro-docs.jd.com/taro/docs/react-native/
 
 
-
-## 1.  从一个官方例子工程入手
-
-### 获取并运行项目
+## 获取并运行项目(从一个官方例子工程入手)
 
 ```bash
  # clone到本地
@@ -28,7 +26,7 @@
 
 <img src="images/image-20220402154346318.png" alt="image-20220402154346318" style="zoom:50%;" />
 
-### 使用 Taro Playground预览
+## 使用 Taro Playground预览
 
   官网： https://github.com/wuba/taro-playground#app-download
 

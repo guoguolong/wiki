@@ -1,3 +1,5 @@
+[toc]
+
 目前实现 SVG 动画较简便的方式有两个：[Lottie](https://github.com/airbnb/lottie-web) 和 [SVGA](http://svga.io/index.html)（两个库各有优缺点，具体对比请转至 [《Android 动画库对比(Lottie 和 SVGA)》](https://jfson.github.io/2018/01/08/41-anim/)）。这里讲解如何从 After Effect 导出到Web去调用整个流程。
 
 

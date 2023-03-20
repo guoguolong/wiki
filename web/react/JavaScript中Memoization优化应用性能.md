@@ -1,3 +1,4 @@
+[toc]
 [英文: Understanding Memoization in JavaScript to Improve Performance](https://blog.bitsrc.io/understanding-memoization-in-javascript-to-improve-performance-2763ab107092)
 
 

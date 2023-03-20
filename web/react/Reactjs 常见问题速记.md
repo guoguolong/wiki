@@ -1,3 +1,5 @@
+[toc]
+
 ## StrictMode
 
 StrictMode 在开发模式下重复调用以下函数或方法以确保没有副作用。原文如下：

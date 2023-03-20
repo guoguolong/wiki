@@ -1,3 +1,4 @@
+[toc]
 # React Hooks与setInterval
 
 Hooks出来已经有段时间了，相信大家都用过段时间了，有没有小伙伴们遇到坑呢，我这边就有个 setInterval 的坑，和小伙伴们分享下解决方案。

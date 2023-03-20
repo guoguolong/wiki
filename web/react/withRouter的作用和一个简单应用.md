@@ -1,3 +1,5 @@
+[toc]
+
 **作用：把不是通过路由切换过来的组件中，将react-router 的 history、location、match 三个对象传入props对象上**
 
 默认情况下必须是经过路由匹配渲染的组件才存在this.props，才拥有路由参数，才能使用编程式导航的写法，执行 `this.props.history.push('/detail')` 跳转到对应路由的页面

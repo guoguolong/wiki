@@ -1,4 +1,5 @@
 # 使用 Preload/Prefetch 优化页面
+[toc]
 
 ## preload 提前加载
 

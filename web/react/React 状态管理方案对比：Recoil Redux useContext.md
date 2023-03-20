@@ -1,3 +1,5 @@
+[toc]
+
 # React 状态管理方案对比：Recoil Redux useContext.md
 
 状态管理是前端开发者绕不开的问题，为了解决这个问题，出现了一些优秀的状态管理方案，`Redux`、`Recoil`、还有 React 自带的`useContext`+`useReducer`，可选的方案太多，以至于会眼花缭乱，这一次我将使用这三个方案完成同一个状态管理需求，供大家参考。

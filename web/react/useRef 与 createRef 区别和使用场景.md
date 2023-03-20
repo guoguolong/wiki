@@ -1,3 +1,4 @@
+[toc]
 假设大家已经使用过 React Hook，并且至少用过 useRef 和 createRef两者中的一个
 
 ## createRef 和 useRef 效果一样的例子

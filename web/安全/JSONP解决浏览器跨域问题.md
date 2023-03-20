@@ -1,3 +1,5 @@
+[toc]
+
 跨域问题起源于：[如果你在a.com/client.html通过JavaScript访问b.com/serve.php将会由于浏览器安全因素无法返回数据。](http://xn--a-376ay2w0qcz31a.com/client.html通过JavaScript访问b.com/serve.php将会由于浏览器安全因素无法返回数据。)
 
 ## 1. 跨域问题最直接解决方案

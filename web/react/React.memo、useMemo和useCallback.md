@@ -1,3 +1,5 @@
+[toc]
+
 # React.memo、useMemo和useCallback 通俗解释版
 
 ## I. useMemo - 避免不必要的函数执行

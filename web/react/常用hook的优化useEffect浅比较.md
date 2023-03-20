@@ -1,3 +1,5 @@
+[toc]
+
 先说说react原版的useEffect使用起来不便的地方
 
 ```javascript
