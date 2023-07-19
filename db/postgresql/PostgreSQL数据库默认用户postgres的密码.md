@@ -1,11 +1,27 @@
 ## 1. 修改PostgreSQL数据库默认用户postgres的密码
 
-PostgreSQL数据库创建一个postgres用户作为数据库的管理员，密码随机，所以需要修改密码，方式如下：
 
 ### 步骤一：登录PostgreSQL
 
+#### Linux系统 - PostgreSQL数据库创建一个postgres用户作为数据库的管理员，密码随机，所以需要修改密码，方式如下：
+
 ```
 sudo -u postgres psql
+```
+#### macOS -用brew安装，直接使用当前用户名作为超管，直接进入：
+
+```
+psql
+```
+然后可以运行 `\du`命令，确认超管，我的如下：
+```
+cn-allenguo=# \du
+                                    List of roles
+  Role name  |                         Attributes                         | Member of 
+-------------+------------------------------------------------------------+-----------
+ koda       |                                                            | {}
+ cn-allenguo | Superuser, Create role, Create DB, Replication, Bypass RLS | {}
+
 ```
 
 ### 步骤二：修改登录PostgreSQL密码

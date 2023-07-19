@@ -1,6 +1,11 @@
 ## 进入psql环境
+linux 环境
 ```bash
-psql -h 192.168.3.218  -p 5432  -U postgres
+psql -h 127.0.0.1  -p 5432  -U postgres
+```
+macOS 环境，直接键入：
+```bash
+psql
 ```
 
 ## DML命令
@@ -38,5 +43,4 @@ cn-allenguo=# \encoding #显示字符集
 cn-allenguo=# 
 cn-allenguo-# \q # 退出 
 ```
-
 
