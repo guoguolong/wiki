@@ -16,7 +16,7 @@
 选择我工作电脑的平台（macOS， iOS），预安装环境包括： node、wantchman、xcode等，不过Web前端程序员默认都装了这些吧，所以直接初始化项目：
 
 ```shell
-npx react-native init AwesomeProject
+npx react-native@latest init AwesomeProject
 ```
 
 ### 运行项目(默认模拟器上)
